@@ -1,7 +1,7 @@
 <template>
-    <div class="content">
+    <div class="content" v-if="track && track.album">
         <p>
-            <img :src="track.album.images[0].url" alt="">
+            <img  :src="track.album.images[0].url" alt="">
         </p>
         <p>
             <strong>{{track.name}}</strong>
