@@ -1,6 +1,16 @@
 <template>
   <div id="app">
     <pm-header></pm-header>
+    <pm-notification v-show="showNotification" :results="false">
+      <p slot="body">
+        No se encontraron resultados
+      </p>
+    </pm-notification>
+    <pm-notification v-show="hasData" :results="true">
+      <p slot="body">
+        {{ searchMessage }}
+      </p>
+    </pm-notification>
     <pm-loader v-show="isLoading"></pm-loader>
     <section class="section" v-show="!isLoading">
       <nav class="nav">
@@ -43,22 +53,41 @@ import PmFooter from './components/layout/Footer'
 import PmHeader from './components/layout/Header'
 import PmTrack from './components/Track'
 import PmLoader from './components/shared/Loader'
+import PmNotification from './components/shared/Notification'
 
 export default {
   name: 'app',
-  components: {PmFooter, PmHeader, PmTrack, PmLoader},
+  components: {PmFooter, PmHeader, PmTrack, PmLoader, PmNotification},
   data () {
     return {
       searchQuery: '',
       tracks: [],
       isLoading: false,
-      selectedTrack: ''
+      showNotification: false,
+      selectedTrack: '',
+      hasData: false
 
     }
   },
   computed: {
     searchMessage () {
       return `Encontrados: ${this.tracks.length}`
+    }
+  },
+  watch: {
+    showNotification () {
+      if (this.showNotification) {
+        setTimeout(() => {
+          this.showNotification = false
+        }, 3000)
+      }
+    },
+    hasData () {
+      if (this.hasData) {
+        setTimeout(() => {
+          this.hasData = false
+        }, 3000)
+      }
     }
   },
   methods: {
@@ -69,6 +98,8 @@ export default {
       this.isLoading = true
       trackService.search(this.searchQuery)
         .then(res => {
+          this.showNotification = res.tracks.total === 0
+          this.hasData = res.tracks.total > 0
           this.tracks = res.tracks.items
           this.isLoading = false
         })

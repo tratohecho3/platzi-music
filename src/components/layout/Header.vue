@@ -19,7 +19,15 @@
             <div class="container has-text-centered">
                 <h1 class="title">Platzi Music</h1>
                 <h2 class="subtitle">Canciones <strong>Vue</strong>nisimas</h2>
+                <pm-player></pm-player>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+import PmPlayer from '../Player'
+export default {
+  components: { PmPlayer }
+}
+</script>
