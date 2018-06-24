@@ -24,7 +24,7 @@
                 <nav class="level">
                     <div class="level-left">
                         <a class="level-item">
-                            <span class="icon is-small">Play</span>
+                            <span class="icon is-small" @click="selectTrack">Play</span>
                         </a>
                     </div>
                 </nav>
@@ -37,6 +37,12 @@
 export default {
   props: {
     track: {type: Object, required: true}
+  },
+  methods: {
+    selectTrack () {
+      console.log(this.track)
+      this.$emit('select', this.track.id)
+    }
   }
 }
 </script>

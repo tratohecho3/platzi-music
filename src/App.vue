@@ -3,7 +3,7 @@
     <pm-header></pm-header>
     <pm-loader v-show="isLoading"></pm-loader>
     <section class="section" v-show="!isLoading">
-      <nav class="nav has-shadow">
+      <nav class="nav">
         <div class="container">
           <div class="columns">
             <div class="column is-four-fifths">
@@ -26,7 +26,7 @@
       <div class="container">
           <div class="columns is-multiline">
               <div class="column is-one-quarter" v-for="t in tracks">
-                <pm-track :track="t"></pm-track>
+                <pm-track :track="t" @select="setSelectedTrack" :class="{ 'is-active': t.id === selectedTrack}"></pm-track>
               </div>
               
           </div>
@@ -51,7 +51,8 @@ export default {
     return {
       searchQuery: '',
       tracks: [],
-      isLoading: false
+      isLoading: false,
+      selectedTrack: ''
 
     }
   },
@@ -71,6 +72,9 @@ export default {
           this.tracks = res.tracks.items
           this.isLoading = false
         })
+    },
+    setSelectedTrack (id) {
+      this.selectedTrack = id
     }
   }
 }
@@ -83,5 +87,9 @@ export default {
   
   font-weight: bold;
   margin-bottom: 15px;
+}
+
+.is-active {
+  border: 3px #23d160 solid;
 }
 </style>
