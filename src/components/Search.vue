@@ -16,7 +16,7 @@
         <div class="container">
           <div class="columns">
             <div class="column is-four-fifths">
-              <input type="text" class="input is-large" placeholder="Buscar Canciones" v-model="searchQuery">
+              <input type="text" class="input is-large" placeholder="Buscar Canciones" v-model="searchQuery" @keyup.enter="search">
             </div>
             <div class="column">
               <a class="button is-info is-large" @click="search">Buscar</a>
