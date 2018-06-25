@@ -35,7 +35,7 @@
       <div class="container">
           <div class="columns is-multiline">
               <div class="column is-one-quarter" v-for="t in tracks">
-                <pm-track :track="t" @select="setSelectedTrack" :class="{ 'is-active': t.id === selectedTrack}"></pm-track>
+                <pm-track :track="t" @select="setSelectedTrack" :class="{ 'is-active': t.id === selectedTrack}" v-blur="t.preview_url"></pm-track>
               </div>
               
           </div>

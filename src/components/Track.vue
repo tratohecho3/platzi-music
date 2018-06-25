@@ -23,12 +23,12 @@
                 <small>{{track.duration_ms | ms-to-mm}}</small>
                 <nav class="level">
                     <div class="level-left">
-                        <a class="level-item">
+                        <button class="level-item button is-primary">
                             <span class="icon is-small" @click="selectTrack">▶️</span>
-                        </a>
-                        <a class="level-item">
+                        </button>
+                        <button class="level-item button is-warning">
                             <span class="icon is-small" @click="goToTrack(track.id)">🌎</span>
-                        </a>
+                        </button>
                     </div>
                 </nav>
             </div>
@@ -43,11 +43,16 @@ export default {
   },
   methods: {
     selectTrack () {
-      console.log(this.track)
+      if (!this.track.preview_url) {
+        return
+      }
       this.$emit('select', this.track.id)
       this.$bus.$emit('set-track', this.track)
     },
     goToTrack (id) {
+      if (!this.track.preview_url) {
+        return
+      }
       this.$router.push({name: 'track', params: {id}})
     }
   }
