@@ -1,5 +1,5 @@
 # platzi-music
-Link: https://platzi-music-tjjayxgvup.now.sh/
+Link: https://platzi-music-cqsleilvur.now.sh/
 > A Vue.js project
 
 ## Build Setup
