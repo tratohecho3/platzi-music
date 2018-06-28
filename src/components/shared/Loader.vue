@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="content has-text-centered">
-            <h1> Cargando...</h1>
+            <h1> {{ $t('loading') }}</h1>
         </div>
     </div>
 </template>

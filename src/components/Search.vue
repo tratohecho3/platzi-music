@@ -11,7 +11,7 @@
     <transition name="move">
       <pm-notification v-show="hasData" :results="true">
         <p slot="body">
-          {{ searchMessage }}
+          {{ $t('found') }}: {{ searchMessage }}
         </p>
       </pm-notification>
     </transition>
@@ -24,16 +24,15 @@
         <div class="container">
           <div class="columns">
             <div class="column is-four-fifths">
-              <input type="text" class="input is-large" placeholder="Buscar Canciones" v-model="searchQuery" @keyup.enter="search">
+              <input type="text" class="input is-large" :placeholder="$t('find')" v-model="searchQuery" @keyup.enter="search">
             </div>
             <div class="column">
-              <a class="button is-info is-large" @click="search">Buscar</a>
-              <a class="button is-danger is-large">&times;</a>
+              <a class="button is-info is-large" @click="search">{{ $t('search') }}</a>
             </div>
           </div>
           <div class="container">
             <p id="encontrados">
-              <small > {{ searchMessage }}</small>
+              <small > {{ $t('found') }}: {{ searchMessage }}</small>
             </p>
           </div>
 
@@ -76,7 +75,7 @@ export default {
   },
   computed: {
     searchMessage () {
-      return `Encontrados: ${this.tracks.length}`
+      return `${this.tracks.length}`
     }
   },
   watch: {

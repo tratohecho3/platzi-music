@@ -1,16 +1,19 @@
 <template>
     <section class="hero is-success">
         <div class="hero-head">
-            <header class="nav">
+            <header class="navbar">
                 <div class="container">
-                    <div class="nav-left">
-                        <div class="nav-item">
+                    <div class="navbar-start">
+                        <div class="navbar-brand">
                             Platzi Music
                         </div>
                     </div>
-                    <div class="nav-right nav-menu">
-                        <router-link class="nav-item" to="/">Buscar</router-link>
-                        <router-link class="nav-item" to="about">Nosotros</router-link>
+                    <div class="navbar-end navbar-menu">
+                        
+                        <a @click="selectLang('en')" class="navbar-item">En</a>
+                        <a @click="selectLang('es')" class="navbar-item">Es</a>
+                        <router-link class="navbar-item" to="/">{{ $t('search') }}</router-link>
+                        <router-link class="navbar-item" to="about">{{ $t('about') }}</router-link>
                     </div>
                 </div>
             </header>
@@ -29,6 +32,12 @@
 <script>
 import PmPlayer from '../Player'
 export default {
-  components: { PmPlayer }
+  components: { PmPlayer },
+
+  methods: {
+    selectLang (lang) {
+      this.$i18n.locale = lang
+    }
+  }
 }
 </script>

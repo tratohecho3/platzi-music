@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="container">
             <div class="content has-text-centered">
-                <p>Desarrollado por Cesar Colina</p>
+                <p>{{ $t('developed') }}</p>
             </div>
         </div>
     </footer>
