@@ -10,6 +10,9 @@
         <p>
             <audio :src="track.preview_url" controls></audio>
         </p>
+                    <video controls>
+                <source :src="track.preview_url" type="audio/mpeg">
+            </video>
     </div>
 </template>
 
