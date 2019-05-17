@@ -1,5 +1,6 @@
 # platzi-music
-Link: https://platzi-music-tjjayxgvup.now.sh/
+Link: https://platzi-music-cqsleilvur.now.sh/
+Please open it in Google Chrome
 > A Vue.js project
 
 ## Build Setup
